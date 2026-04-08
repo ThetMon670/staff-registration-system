@@ -1,0 +1,80 @@
+import { customerGenders } from "@/lib/constants";
+import { staffApiUrl, updateStaff } from "@/services/staffService";
+import { StaffDetailType, StaffEditFormValues } from "@/types/StaffTypes";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { mutate } from "swr";
+import z from "zod";
+
+export const staffEditFormSchema = z.object({
+  image: z.string().optional(),
+  name: z.string().min(1, "Name is required"),
+  date_of_birth: z
+    .string()
+    .refine((date) => !isNaN(Date.parse(date)), "Invalid date"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(8, "Phone number must be at least 8 digits"),
+  address: z.string().min(1, "Address is required"),
+  gender: z
+    .enum(customerGenders)
+    .or(z.literal(""))
+    .refine((val) => val !== "", {
+      message: "Please select gender",
+      path: ["gender"],
+    }),
+  stay_here: z.boolean(),
+  confirm: z.boolean().refine((val) => val === true, {
+    message: "You must check to create new customer",
+    path: ["confirm"],
+  }),
+});
+
+function useStaffEdit(staffData: StaffDetailType) {
+  const form = useForm<StaffEditFormValues>({
+    resolver: zodResolver(staffEditFormSchema),
+    defaultValues: {
+      ...staffData,
+      stay_here: false,
+      confirm: false,
+    },
+  });
+
+  const router = useRouter();
+
+  const onSubmit = async (formData: StaffEditFormValues) => {
+    try {
+      const { stay_here, confirm, ...payload } = formData;
+      const res = await updateStaff(payload, staffData.id);
+      const json = await res.json();
+
+      if (!res.ok) {
+        throw new Error(json.message || "Staff update failed");
+      }
+
+      mutate(`${staffApiUrl}/${staffData.id}`);
+
+      toast.success("Staff updated successfully");
+
+      form.reset();
+
+      if (!stay_here) {
+        router.push(`/dashboard/staffs/${json.data.id}`);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("An unexpected error occurred");
+      }
+    }
+  };
+
+  return {
+    ...form,
+    onSubmit,
+  };
+}
+
+export default useStaffEdit;
