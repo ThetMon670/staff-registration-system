@@ -1,8 +1,7 @@
 import { StaffStorePayloadValues, StaffUpdatePayloadValues } from "@/types/StaffTypes";
 import { getCookie } from "react-use-cookie";
 
-export const staffApiUrl =
-  process.env.NEXT_PUBLIC_BASE_URL + "/dashboard/staffs";
+export const staffApiUrl = process.env.NEXT_PUBLIC_BASE_URL + "/v1/staffs";
 
 // store
 // update

@@ -8,32 +8,22 @@ import { toast } from "sonner";
 import z from "zod";
 
 export const staffCreateFormSchema = z.object({
+  staff_code: z.string().min(1, "Staff code is required"),
   name: z.string().min(1, "Name is required"),
-    image: z.string().min(1, "Image is required"),
-  date_of_birth: z
-    .string()
-    .refine((date) => !isNaN(Date.parse(date)), "Invalid date"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(8, "Phone number must be at least 8 digits"),
-  address: z.string().min(1, "Address is required"),
-  gender: z
-    .enum(customerGenders)
-    .or(z.literal(""))
-    .refine((val) => val !== "", {
-      message: "Please select gender",
-      path: ["gender"],
-    }),
+  department: z.string().min(1, "Department is required"),
+  phone: z.string().optional(),
+  email: z.string().email("Invalid email").optional().or(z.literal("")),
+  password: z.string().min(6, "Password must be at least 6 characters").optional(),
   stay_here: z.boolean(),
   confirm: z.boolean().refine((val) => val === true, {
-    message: "You must check to create new customer",
-    path: ["confirm"],
+    message: "You must confirm to create staff",
   }),
 });
 
 function useStaffCreate() {
   const form = useForm<StaffCreateFormValues>({
     resolver: zodResolver(staffCreateFormSchema),
-    defaultValues: {
+     defaultValues: {
       staff_code: "",
       name: "",
       department: "",
@@ -54,15 +44,15 @@ function useStaffCreate() {
       const json = await res.json();
 
       if (!res.ok) {
-        throw new Error(json.message || "Customer creation failed");
+        throw new Error(json.message || "Staff creation failed");
       }
 
-      toast.success("Customer created successfully");
+      toast.success("Staff created successfully");
 
       form.reset();
 
       if (!stay_here) {
-        router.push(`/dashboard/customers/${json.data.id}`);
+        router.push(`/dashboard/staffs/${json.data.id}`);
       }
 
     } catch (error: unknown) {

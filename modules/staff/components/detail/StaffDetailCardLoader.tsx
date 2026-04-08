@@ -1,21 +1,21 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-function CustomerDetailCardLoader() {
+function StaffDetailCardLoader() {
   return (
     <div className="w-1/2 grid grid-cols-2 gap-6 p-4">
-      {/* Profile Image */}
-      <Skeleton className="size-20 col-span-full rounded-md" />
-      
-      {/* Name */}
+      {/* Staff Code */}
       <div>
-        <Skeleton className="h-2 w-16 mb-2" />
-        <div className="flex items-center gap-2">
-          <Skeleton className="h-3 w-16" />
-          <Skeleton className="h-4 w-8" />
-        </div>
+        <Skeleton className="h-2 w-20 mb-2" />
+        <Skeleton className="h-3 w-24" />
       </div>
 
-      {/* DOB */}
+      {/* Department */}
+      <div>
+        <Skeleton className="h-2 w-20 mb-2" />
+        <Skeleton className="h-5 w-20 rounded-full" />
+      </div>
+
+      {/* Name */}
       <div>
         <Skeleton className="h-2 w-16 mb-2" />
         <Skeleton className="h-3 w-32" />
@@ -33,10 +33,10 @@ function CustomerDetailCardLoader() {
         <Skeleton className="h-3 w-28" />
       </div>
 
-      {/* Address */}
-      <div className="col-span-full">
+      {/* User Account */}
+      <div>
         <Skeleton className="h-2 w-20 mb-2" />
-        <Skeleton className="h-3 w-full" />
+        <Skeleton className="h-3 w-36" />
       </div>
 
       {/* Created At */}
@@ -54,4 +54,4 @@ function CustomerDetailCardLoader() {
   );
 }
 
-export default CustomerDetailCardLoader;
+export default StaffDetailCardLoader;

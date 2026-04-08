@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import CustomerTable from "./StaffTable";
+import StaffTable from "./StaffTable";
 
 function StaffListSection() {
   return (
@@ -11,7 +11,7 @@ function StaffListSection() {
         </p>
       </div>
       <Suspense>
-        <CustomerTable />
+        <StaffTable />
       </Suspense>
     </section>
   );

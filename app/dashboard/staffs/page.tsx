@@ -1,11 +1,11 @@
-import CustomerIndexSection from "@/modules/customer/components/list/CustomerListSection";
 import Header from "@/components/Header";
+import StaffListSection from "@/modules/staff/components/list/StaffListSection";
 
 function page() {
   return (
     <>
       <Header currentPage="customers" />
-      <CustomerIndexSection />
+      <StaffListSection />
     </>
   );
 }

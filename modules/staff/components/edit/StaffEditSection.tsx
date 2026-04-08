@@ -1,10 +1,11 @@
 "use client";
-import useCustomerDetail from "../../hooks/useStaffDetail";
-import CustomerEditFormLoader from "./CustomerEditFormLoader";
-import CustomerEditFrom from "./CustomerEditForm";
 
-function CustomerEditSection() {
-  const { id, data, error, isLoading } = useCustomerDetail();
+import useStaffDetail from "../../hooks/useStaffDetail";
+import StaffEditForm from "./StaffEditForm";
+import StaffEditFormLoader from "./StaffEditFormLoader";
+
+function StaffEditSection() {
+  const { id, data, error, isLoading } = useStaffDetail();
 
 
   return (
@@ -17,12 +18,12 @@ function CustomerEditSection() {
       </div>
 
       {isLoading ? (
-        <CustomerEditFormLoader />
+        <StaffEditFormLoader />
       ) : (
-        <CustomerEditFrom data={data.data} />
+        <StaffEditForm data={data.data} />
       )}
     </section>
   );
 }
 
-export default CustomerEditSection;
+export default StaffEditSection;

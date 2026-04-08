@@ -1,5 +1,5 @@
-import CustomerDetailSection from "@/modules/customer/components/detail/CustomerDetailSection";
 import Header from "@/components/Header";
+import StaffDetailSection from "@/modules/staff/components/detail/StaffDetailSection";
 
 function page() {
   return (
@@ -7,13 +7,13 @@ function page() {
       <Header
         links={[
           {
-            title: "customers",
-            href: "/dashboard/customers",
+            title: "staffs",
+            href: "/dashboard/staffs",
           },
         ]}
         currentPage="Detail"
       />
-      <CustomerDetailSection />
+      <StaffDetailSection />
     </>
   );
 }

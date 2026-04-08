@@ -1,14 +1,14 @@
 import { fetcher } from "@/lib/fetcher";
-import { customerApiUrl } from "@/services/staffService";
+import { staffApiUrl } from "@/services/staffService";
 import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
 
-function useCustomerList() {
+function useStaffList() {
   const searchParams = useSearchParams();
 
   const fetchUrl = searchParams.toString()
-    ? `${customerApiUrl}?${searchParams.toString()}`
-    : customerApiUrl;
+    ? `${staffApiUrl}?${searchParams.toString()}`
+    : staffApiUrl;
   const swr = useSWR(fetchUrl, fetcher);
 
   return {
@@ -16,4 +16,4 @@ function useCustomerList() {
   };
 }
 
-export default useCustomerList;
+export default useStaffList;

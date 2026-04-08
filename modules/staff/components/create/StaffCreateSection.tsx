@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import CustomerCreateFrom from "./CustomerCreateForm";
+import StaffCreateForm from "./StaffCreateForm";
 
-function CustomerCreateSection() {
+function StaffCreateSection() {
   return (
     <section className="container mx-auto py-3  flex flex-col gap-4">
       <div className="">
@@ -12,9 +12,9 @@ function CustomerCreateSection() {
         </p>
       </div>
 
-      <CustomerCreateFrom />
+      <StaffCreateForm />
     </section>
   );
 }
 
-export default CustomerCreateSection;
+export default StaffCreateSection;

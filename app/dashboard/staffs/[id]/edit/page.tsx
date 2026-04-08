@@ -1,5 +1,5 @@
-import CustomerEditSection from "@/modules/customer/components/edit/CustomerEditSection";
 import Header from "@/components/Header";
+import StaffEditSection from "@/modules/staff/components/edit/StaffEditSection";
 
 async function page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -8,17 +8,17 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
       <Header
         links={[
           {
-            title: "customers",
-            href: "/dashboard/customers",
+            title: "staffs",
+            href: "/dashboard/staffs",
           },
           {
             title: "detail",
-            href: `/dashboard/customers/${id}`,
+            href: `/dashboard/staffs/${id}`,
           },
         ]}
         currentPage="Edit"
       />
-      <CustomerEditSection />
+      <StaffEditSection />
     </>
   );
 }

@@ -18,7 +18,7 @@ function ModuleLinkList() {
         {
           icon: <Users />,
           title: "Staff",
-          href: "/dashboard/staff",
+          href: "/dashboard/staffs",
         },
       ],
     },
