@@ -37,22 +37,10 @@ function ModuleLinkList() {
     },
   ];
 
-  const userModules = [
-    {
-      groupTitle: "User Information",
-      modules: [
-        {
-          icon: <UserCircle />,
-          title: "Profile Information",
-          href: "/dashboard/profile-information",
-        },
-      ],
-    },
-  ];
   const moduleLinks =
     profile?.role === "admin"
-      ? [...adminModules, ...userModules]
-      : [...staffModules, ...userModules];
+      ? [...adminModules]
+      : [...staffModules];
 
   return (
     <section className="flex flex-col gap-8 container mx-auto">
