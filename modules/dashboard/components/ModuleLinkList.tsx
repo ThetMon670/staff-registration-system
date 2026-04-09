@@ -31,7 +31,7 @@ function ModuleLinkList() {
         {
           icon: <Clock />,
           title: "Check In / Check Out",
-          href: "/dashboard/attendances",
+          href: "/dashboard/checkinoroutpanel",
         },
       ],
     },
