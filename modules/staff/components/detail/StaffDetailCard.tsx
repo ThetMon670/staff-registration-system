@@ -37,10 +37,6 @@ function StaffDetailCard({
         <p className="text-sm text-foreground">{phone || "-"}</p>
       </div>
 
-      <div>
-        <p className="text-xs text-muted-foreground mb-1">User Account</p>
-        <p className="text-sm text-foreground">{user?.email}</p>
-      </div>
 
       <div>
         <p className="text-xs text-muted-foreground mb-1">Created At</p>

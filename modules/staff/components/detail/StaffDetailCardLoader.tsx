@@ -33,11 +33,6 @@ function StaffDetailCardLoader() {
         <Skeleton className="h-3 w-28" />
       </div>
 
-      {/* User Account */}
-      <div>
-        <Skeleton className="h-2 w-20 mb-2" />
-        <Skeleton className="h-3 w-36" />
-      </div>
 
       {/* Created At */}
       <div>

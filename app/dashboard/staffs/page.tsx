@@ -4,7 +4,7 @@ import StaffListSection from "@/modules/staff/components/list/StaffListSection";
 function page() {
   return (
     <>
-      <Header currentPage="customers" />
+      <Header currentPage="staffs" />
       <StaffListSection />
     </>
   );
